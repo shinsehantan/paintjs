@@ -1,0 +1,55 @@
+@import "reset.css";
+
+body {
+    display:flex;
+    flex-direction: column;
+    font-family: Arial;
+    background-color:gray;
+    align-items: center;
+    justify-content: center;
+    range: column;
+}
+
+.box {
+    background-color:white;
+    width : 400px;
+    height : 500px;
+    box-shadow:black;
+}
+
+#range_bar {
+    margin-top: 30px;
+}
+
+.buttons {
+    all : unset;
+    margin-top: 20px;
+}
+
+.button1 .button2{
+    border: none;
+    width: 50px;
+    height: 20px;
+    box-shadow: 0 5px #666;
+}
+
+.button1 .button2:active {
+    background-color: rgb(237, 11, 11);
+}
+
+.controls {
+    margin-top: 20px;
+    range: column;
+}
+
+.controls__colors {
+    display: flex;
+}
+
+.controls__color {
+    width: 30px;
+    height: 30px;
+    border-radius: 25px;
+    box-shadow: 0 5px #666;
+    margin-bottom: 50px;
+}
