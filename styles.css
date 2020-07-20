@@ -4,16 +4,17 @@ body {
     display:flex;
     flex-direction: column;
     font-family: Arial;
-    background-color:gray;
+    background-color:#9dc6d8;
     align-items: center;
 }
 
 .box {
     margin-top: 50px;
     background-color:white;
-    width : 400px;
+    width : 500px;
     height : 500px;
     box-shadow:black;
+    border-radius: 25px;
 }
 
 .controls {
@@ -26,7 +27,6 @@ body {
 }
 
 .controls__btns {
-    
     margin-top: 20px;
 }
 

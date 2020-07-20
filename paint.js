@@ -3,14 +3,49 @@ const ctx = canvas.getContext('2d');
 const paintColor = document.getElementsByClassName('controls__color');
 const colorArray = Array.from(paintColor);
 const range = document.getElementById('range_bar');
-console.log(range.value)
-canvas.width = 400;
+const mode = document.querySelector('.button1');
+const save = document.querySelector('.button2');
+
+canvas.width = 500;
 canvas.height = 500;
 
+ctx.fillStyle = 'white';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
 ctx.strokeStyle = 'blue';
 ctx.lineWidth = 1;
 
 let painting = false;
+let filling = false;
+
+alert("draw yourself!");
+
+function saveHandler(event) {
+    const image = canvas.toDataURL();
+    const link = document.createElement("a");
+    console.log(image);
+    link.href = image;
+    link.download = "paintJS";
+    link.click();
+}
+
+function fillingMode() {
+    if (filling === true) {
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+}
+
+function clickMode() {
+    if (filling === true) {
+        filling = false;
+        mode.innerText = "Fill"
+    }else {
+        filling = true;
+        mode.innerText = "Paint"
+    }
+}
+
+mode.addEventListener("click", clickMode);
+
 function startPainting() {
     painting = true;
 }
@@ -37,6 +72,7 @@ function mouseMoveHandler(event) {
 function colorChange(event) {
     const color = event.target.style.backgroundColor;
     ctx.strokeStyle = color;
+    ctx.fillStyle = color;
 }
 
 colorArray.forEach(x => x.addEventListener("click",colorChange));
@@ -53,3 +89,5 @@ canvas.addEventListener('mousemove',mouseMoveHandler);
 canvas.addEventListener('mousedown',mouseDownHandler);
 canvas.addEventListener('mouseleave',stopPainting);
 canvas.addEventListener('mouseup',stopPainting);
+canvas.addEventListener('click',fillingMode);
+save.addEventListener('click',saveHandler);
